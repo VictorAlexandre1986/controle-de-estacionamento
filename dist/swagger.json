@@ -1,0 +1,62 @@
+{
+    "openapi": "3.0.0",
+    "info": {
+        "title": "Estacionamento",
+        "version": "1.0.0",
+        "description": "Sistema de controle de um estacionamento"
+    },
+    "paths": {
+        "/cliente": {
+            "get": {
+                "summary": "Obter todos os clientes",
+                "responses": {
+                    "200": {
+                        "description": "Sucesso"
+                    }
+                }
+            },
+            "post": {
+                "summary": "Cadastrar um cliente",
+                "requestBody": {
+                    "required": true,
+                    "content": {
+                        "application/x-www-form-urlencoded": {
+                            "schema": {
+                                "type": "object",
+                                "properties": {
+                                    "nome": {
+                                        "type": "string"
+                                    },
+                                    "placa": {
+                                        "type": "string"
+                                    },
+                                    "veiculo": {
+                                        "type": "string"
+                                    },
+                                    "num_vaga": {
+                                        "type": "number"
+                                    },
+                                    "limpeza": {
+                                        "type": "boolean"
+                                    },
+                                    "hora_entrada": {
+                                        "type": "string"
+                                    },
+                                    "hora_saida": {
+                                        "type": "string"
+                                    }
+                                },
+                                "required": ["nome", "placa", "veiculo", "num_vaga", "limpeza", "hora_entrada", "hora_saida"]
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "201": {
+                        "description": "Cliente cadastrado"
+                    }
+                }
+            }
+        }
+    }
+}

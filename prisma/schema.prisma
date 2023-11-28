@@ -1,0 +1,30 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+generator client {
+  provider = "prisma-client-js"
+  // output   = "./node_modules/@prisma/client"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+ 
+  // url      = "file:./dev.db"
+}
+
+model Cliente {
+  id                     Int      @id @default(autoincrement())
+  nome               String
+  placa               String
+  veiculo            String
+  num_vaga       String
+  limpeza           Boolean   
+  hora_entrada   DateTime 
+  hora_saida      DateTime
+  createdAt        DateTime? @default(now())
+  updatedAt       DateTime? @default(now())  
+  }
