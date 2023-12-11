@@ -1,0 +1,38 @@
+Salvar entrada
+http://localhost:3000/cliente
+{
+	"nome":"Teste20",
+	"placa":"jhk1456",
+	"veiculo":"gol",
+	"num_vaga":"20",
+	"limpeza":true,
+	"hora_entrada":"2023-11-03T11:00:00-03:00",
+	"hora_saida":"2023-11-03T12:00:00-03:00"
+}
+
+Obter todas as entradas
+http://localhost:3000/cliente
+
+Obter entrada por id 
+http://localhost:3000/cliente/20
+
+Deletar entrada
+http://localhost:3000/cliente/10
+
+Atualizar entrada
+http://localhost:3000/cliente/20
+{
+	"nome":"Xispita",
+	"placa":"jhk145",
+	"veiculo":"gol",
+	"num_vaga":"2",
+	"limpeza":false,
+	"hora_entrada":"2023-11-03T11:00:00-03:00",
+	"hora_saida":"2023-11-03T14:30:00-03:00"
+}
+
+Calcular o pagamento por id
+http://localhost:3000/pagamento/20
+
+Obter todas as entradas em uma determinada data
+http://localhost:3000/pagamento/data/2023-11-03T14:00:00.000Z
