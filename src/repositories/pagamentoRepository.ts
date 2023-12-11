@@ -13,7 +13,7 @@ export class PagamentoRepository {
 
   async getPagamentoByDate(data: any) {
         return await prisma.cliente.findMany({
-            where: {  hora_entrada: data },
+            where: {  hora_entrada: new Date(data.data) },
         });
     }
 }

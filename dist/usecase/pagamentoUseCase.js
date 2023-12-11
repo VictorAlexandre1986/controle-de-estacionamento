@@ -25,12 +25,12 @@ class PagamentoUseCase {
             const min_estacionado = min_saida - min_entrada;
             if (hr_estacionado > 0) {
                 const valor_hora = hr_estacionado * 7;
-                const valor_minuto = min_estacionado * 0.12;
-                let total_pagar = valor_hora + valor_minuto;
+                const valor_minuto = Math.abs(min_estacionado * 0.12);
+                const total_pagar = valor_hora + valor_minuto;
                 return total_pagar;
             }
-            const valor_minuto = min_estacionado * 0.12;
-            let total_pagar = valor_minuto;
+            //Menos de uma hora para uma hora inteiera
+            let total_pagar = 7;
             return total_pagar;
         });
     }
@@ -39,16 +39,31 @@ class PagamentoUseCase {
             const dados = yield pagamentoRepository.getPagamentoById(id);
             if (dados != null || dados != undefined) {
                 const { hora_entrada, hora_saida } = dados;
-                const total_pagar = this.calcular_valor(hora_entrada, hora_saida);
+                const total_pagar = yield this.calcular_valor(hora_entrada, hora_saida);
+                console.log(total_pagar);
                 const total_pagar_obj = {
-                    "total_pagar": total_pagar
+                    "total_pagar": total_pagar,
                 };
                 return total_pagar_obj;
             }
         });
     }
+    formatar_data(data) {
+        return __awaiter(this, void 0, void 0, function* () {
+            const estacionados_mesmo_dia = new Date(data);
+            const dia = estacionados_mesmo_dia.getDate();
+            const mes = estacionados_mesmo_dia.getMonth();
+            const ano = estacionados_mesmo_dia.getFullYear();
+            const hora = 0;
+            const minutos = 0;
+            const segundos = 0;
+            const data_formatada = new Date(data);
+            return data_formatada;
+        });
+    }
     getPagamentoByDate(data) {
         return __awaiter(this, void 0, void 0, function* () {
+            const data_formatada = yield this.formatar_data(data);
             return yield pagamentoRepository.getPagamentoByDate(data);
         });
     }

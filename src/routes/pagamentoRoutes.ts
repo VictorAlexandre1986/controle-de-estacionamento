@@ -4,8 +4,8 @@ import { PagamentoController } from '../controllers/pagamentoControllers';
 const router = express.Router();
 const pagamentoController = new PagamentoController();
 
-router.get('/:data', pagamentoController.getPagamentosByDate);
-router.get('/:id', pagamentoController.getPagamentosById);
+router.get('/:id', pagamentoController.getPagamentoById);
+router.get('/data/:data', pagamentoController.getPagamentoByDate);
 
 
 export default router;

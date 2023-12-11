@@ -23,7 +23,7 @@ class PagamentoRepository {
     getPagamentoByDate(data) {
         return __awaiter(this, void 0, void 0, function* () {
             return yield prisma.cliente.findMany({
-                where: { hora_entrada: data },
+                where: { hora_entrada: new Date(data.data) },
             });
         });
     }

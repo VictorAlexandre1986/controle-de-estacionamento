@@ -13,16 +13,16 @@ exports.PagamentoController = void 0;
 const pagamentoUseCase_1 = require("../usecase/pagamentoUseCase");
 const pagamentoUseCase = new pagamentoUseCase_1.PagamentoUseCase();
 class PagamentoController {
-    getPagamentosById(req, res) {
+    getPagamentoById(req, res) {
         return __awaiter(this, void 0, void 0, function* () {
             const { id } = req.params;
-            const pagamento = yield pagamentoUseCase.getPagamentoById(Number(id));
-            res.json(pagamento);
+            const user = yield pagamentoUseCase.getPagamentoById(Number(id));
+            res.json(user);
         });
     }
-    getPagamentosByDate(req, res) {
+    getPagamentoByDate(req, res) {
         return __awaiter(this, void 0, void 0, function* () {
-            const data = req.body;
+            const data = req.params;
             const pagamento = yield pagamentoUseCase.getPagamentoByDate(data);
             res.json(pagamento);
         });

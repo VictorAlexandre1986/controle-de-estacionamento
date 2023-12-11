@@ -5,14 +5,15 @@ const pagamentoUseCase = new PagamentoUseCase();
 
 export class PagamentoController {
   
-  async getPagamentosById(req: Request, res: Response) {
+  async getPagamentoById(req: Request, res: Response) {
     const { id } = req.params;
-    const pagamento = await pagamentoUseCase.getPagamentoById(Number(id));
-    res.json(pagamento);
+    const user = await pagamentoUseCase.getPagamentoById(Number(id));
+    res.json(user);
   }
 
-  async getPagamentosByDate(req: Request, res: Response) {
-    const data = req.body;
+
+  async getPagamentoByDate(req: Request, res: Response) {
+    const data = req.params;
     const pagamento = await pagamentoUseCase.getPagamentoByDate(data);
     res.json(pagamento);
   }
