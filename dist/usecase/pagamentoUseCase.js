@@ -38,13 +38,25 @@ class PagamentoUseCase {
         return __awaiter(this, void 0, void 0, function* () {
             const dados = yield pagamentoRepository.getPagamentoById(id);
             if (dados != null || dados != undefined) {
-                const { hora_entrada, hora_saida } = dados;
-                const total_pagar = yield this.calcular_valor(hora_entrada, hora_saida);
-                console.log(total_pagar);
-                const total_pagar_obj = {
-                    "total_pagar": total_pagar,
-                };
-                return total_pagar_obj;
+                const { hora_entrada, hora_saida, limpeza } = dados;
+                let total_pagar = yield this.calcular_valor(hora_entrada, hora_saida);
+                if (limpeza) {
+                    const total_pagar_obj = {
+                        "aluguel da vaga": total_pagar,
+                        "limpeza do veiculo": "30",
+                        "total_pagar": total_pagar + 30
+                    };
+                    return total_pagar_obj;
+                }
+                else {
+                    //Caso não tenha feito limpeza
+                    const total_pagar_obj = {
+                        "aluguel da vaga": total_pagar,
+                        "limpeza": "0",
+                        "total_pagar": total_pagar,
+                    };
+                    return total_pagar_obj;
+                }
             }
         });
     }
