@@ -10,4 +10,3 @@ Controle de estacionamento feito em typescript e prisma, utilizando o banco de d
   <li>PostgreSQL</li>
 </ul>
 
-Obs: Falta implementar a parte de pagamento
